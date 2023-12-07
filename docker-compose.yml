@@ -1,0 +1,14 @@
+version: '3'
+services:
+  webapp:
+    restart: always
+    build:
+      context: .
+    container_name: docker_rails7
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/webapp
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
